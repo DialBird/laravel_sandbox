@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('book', 'BookController@index');
-Route::get('book/create', 'BookController@create');
-Route::get('book/{id}', 'BookController@show');
 Route::post('book', 'BookController@store');
-Route::get('book/{id}/edit', 'BookController@edit');
+Route::get('book', 'BookController@index')->name('book.index');
+Route::get('book/create', 'BookController@create');
+Route::get('book/{id}', 'BookController@show')->name('book.show');
+Route::get('book/{id}/edit', 'BookController@edit')->name('book.edit');
 Route::put('book/{id}', 'BookController@update');
 Route::delete('book/{id}', 'BookController@destroy');

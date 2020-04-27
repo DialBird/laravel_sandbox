@@ -13,16 +13,20 @@
           <th class="text-center">書籍名</th>
           <th class="text-center">価格</th>
           <th class="text-center">著者</th>
+          <th class="text-center">編集</th>
           <th class="text-center">削除</th>
         </tr>
         @foreach($books as $book)
           <tr>
             <td>
-              <a href="/book/{{ $book->id }}/edit">{{ $book->id }}</a>
+              <a href="{{ route('book.show', ['id' => $book->id]) }}">{{ $book->id }}</a>
             </td>
             <td>{{ $book->title }}</td>
             <td>{{ $book->price }}</td>
             <td>{{ $book->author }}</td>
+            <td>
+              <a href="{{ route('book.edit', ['id' => $book->id])}}">編集</a>
+            </td>
             <td>
               <form action="/book/{{ $book->id }}" method="post">
                 <input type="hidden" name="_method" value="DELETE">
