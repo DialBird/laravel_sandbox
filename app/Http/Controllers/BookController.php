@@ -19,9 +19,45 @@ class BookController extends Controller
         return view('book/show', compact('book'));
     }
 
+    public function create()
+    {
+        $book = new Book();
+        return view('book/create', compact('book'));
+    }
+
+    public function store(Request $request)
+    {
+        $book = new Book();
+        $book->title = $request->title;
+        $book->price = $request->price;
+        $book->author = $request->author;
+        $book->save();
+
+        return redirect("/book");
+    }
+
     public function edit($id)
     {
         $book = Book::findOrFail($id);
         return view('book/edit', compact('book'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $book = Book::findOrFail($id);
+        $book->title = $request->title;
+        $book->price = $request->price;
+        $book->author = $request->author;
+        $book->save();
+
+        return redirect("/book");
+    }
+
+    public function destroy($id)
+    {
+        $book = Book::findOrFail($id);
+        $book->delete();
+
+        return redirect("/book");
     }
 }

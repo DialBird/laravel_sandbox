@@ -25,7 +25,7 @@
           <input type="text" class="form-control" name="author" value="{{ $book->author }}">
         </div>
         <button type="submit" class="btn btn-default">登録</button>
-        <a href="/books">戻る</a>
+        <a href="/book">戻る</a>
       </form>
     </div>
   </div>
