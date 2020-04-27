@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Encore\Admin\Auth\Database\AdminTablesSeeder;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(AdminTablesSeeder::class);
         $this->call(BooksTableSeeder::class);
     }
 }

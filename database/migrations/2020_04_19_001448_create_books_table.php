@@ -16,7 +16,8 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 100);
-            $table->text('description');
+            $table->string('author');
+            $table->text('description')->nullable();
             $table->integer('page_count')->default(200);
             $table->integer('price');
             $table->timestamps();
