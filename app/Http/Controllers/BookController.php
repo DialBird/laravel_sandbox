@@ -43,11 +43,13 @@ class BookController extends Controller
     public function update(Request $request, $id)
     {
         $book = Book::findOrFail($id);
-        $book->title = $request->title;
-        $book->price = $request->price;
-        $book->author = $request->author;
+        $validatedData = $request->validate([
+            'title' => "required|unique:books,title,$id",
+            'price' => 'required',
+            'author' => 'required',
+        ]);
+        $book->fill($validatedData);
         $book->save();
-
         return redirect("/book");
     }
 
