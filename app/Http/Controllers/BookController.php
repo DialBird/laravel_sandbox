@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use App\Http\Requests\StoreBookPost;
 
 class BookController extends Controller
 {
@@ -25,12 +26,9 @@ class BookController extends Controller
         return view('book/create', compact('book'));
     }
 
-    public function store(Request $request)
+    public function store(StoreBookPost $request)
     {
-        $book = new Book();
-        $book->title = $request->title;
-        $book->price = $request->price;
-        $book->author = $request->author;
+        $book = new Book($request->validated());
         $book->save();
 
         return redirect("/book");
